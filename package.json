@@ -1,0 +1,31 @@
+{
+  "name": "attsu-scheduler-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/attsu-study/attsu-scheduler-bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/attsu-study/attsu-scheduler-bot/issues"
+  },
+  "homepage": "https://github.com/attsu-study/attsu-scheduler-bot#readme",
+  "dependencies": {
+    "botkit": "^0.7.4",
+    "botkit-storage-redis": "^1.1.0",
+    "cron": "^1.6.0",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.23",
+    "node-fetch": "^2.3.0"
+  },
+  "devDependencies": {
+    "localtunnel": "^1.9.1"
+  }
+}
