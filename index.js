@@ -102,7 +102,7 @@ controller.hears(['when'], ['direct_mention', 'mention'], (bot, msg) => {
 
     controller.storage.teams.get('next', (err, channelData) => {
 
-        if (err) {
+        if (err || !channelData) {
             bot.reply(msg, {
                 ...appConfig.slack.bot,
                 ...{text: `次回の日程がまだ設定されていません`}
@@ -171,8 +171,7 @@ controller.on('block_actions', (bot, msg) => {
     const formattedDate = moment(selectedDate).format('YYYY年MM月DD日');
 
     controller.storage.teams.get('next', (err, channelData) => {
-        console.log(channelData);
-        if (err) {
+        if (err || !channelData) {
             // まだ設定されていない場合
             controller.storage.teams.save({id: 'next', eventDate: selectedDate}, err => {
 
