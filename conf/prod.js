@@ -5,7 +5,7 @@ module.exports.prod = {
             icon_url: 'https://octodex.github.com/images/privateinvestocat.jpg',
             username: '闇の裁定者'
         },
-        postChannel: 'test-private-channel' // FIXME
+        postChannel: 'random'
     },
     redis: {
         url: process.env.REDIS_URL
