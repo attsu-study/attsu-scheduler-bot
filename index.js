@@ -10,6 +10,8 @@ moment.tz.setDefault('Asia/Tokyo');
 
 const appConfig = config.get();
 
+console.log(`ENV=${env}`);
+
 // connect to REDIS
 const redisStorage = require('botkit-storage-redis')(appConfig.redis);
 const controller = BotKit.slackbot({
@@ -50,7 +52,7 @@ controller.spawn({
         onTick: () => {
             console.log('started job');
             console.log(`Now: ${moment().format('YYYY-MM-DD HH:mm:ss')}`);
-            postChannel(appConfig.slack.postChannel, '今週は勉強会です', bot.say);
+            postChannel(appConfig.slack.postChannel, '<!channel> 今週は勉強会です（テスト）', bot.say);
         },
         start: true,
         timeZone: 'Asia/Tokyo'
@@ -58,15 +60,27 @@ controller.spawn({
 });
 
 const postChannel = (channel, text, callback) => {
-    controller.storage.channels.get('next', (err, channelData) => {
+    controller.storage.teams.get('next', (err, channelData) => {
 
         if (err) {
-            console.log(`Cannot get storage: ${err}`);
+            callback({
+                channel: appConfig.slack.alertChannel,
+                ...appConfig.slack.bot,
+                attachments: [
+                    {
+                        title: 'bot alert!',
+                        author_name: 'scheduler-bot',
+                        color: 'danger',
+                        pretext: 'Cannot get storage',
+                        text: err,
+                        mrkdwn_in: ['text', 'pretext']
+                    }
+                ]
+            });
             return
         }
 
         if (env === 'dev') {
-            text = '<!channel> 今週は勉強会です（テスト）';
             callback({
                 channel,
                 text,
@@ -131,6 +145,11 @@ controller.hears(['next'], ['direct_mention', 'mention'], (bot, msg) => {
         }
     }, (err, id) => {
         if (err) {
+            bot.say({
+                channel: appConfig.slack.alertChannel,
+                text: `Cannot get storage: ${err}`,
+                ...appConfig.slack.bot
+            });
             throw new Error('ERROR: ' + err);
         }
     });

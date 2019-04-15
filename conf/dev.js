@@ -5,6 +5,7 @@ module.exports.dev = {
             icon_url: 'https://octodex.github.com/images/daftpunktocat-thomas.gif',
             username: '闇の裁定者（dev）'
         },
+        alertChannel: 'alert-bot',
         postChannel: 'test-private-channel'
     },
     redis: {}
