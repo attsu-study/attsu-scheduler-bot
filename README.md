@@ -7,7 +7,7 @@ dynoが30分で寝てしまうため[10分ごとに起こしている](https://u
 ローカルで動かす場合
 ```sh
 $ redis-server
-$ BOTKIT_SLACK_CLIENT_ID={client_id} BOTKIT_SLACK_CLIENT_SECRET={client_secret} SLACK_TOKEN={slack_token} PORT=3000 CRON='*/1 * * * *' node index.js
+$ BOTKIT_SLACK_CLIENT_ID={client_id} BOTKIT_SLACK_CLIENT_SECRET={client_secret} SLACK_TOKEN={slack_token} node index.js
 ```
 
 ```sh

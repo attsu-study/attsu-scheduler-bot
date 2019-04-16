@@ -10,5 +10,6 @@ module.exports.prod = {
     },
     redis: {
         url: process.env.REDIS_URL
-    }
+    },
+    cronTime: '00 12 * * *' // 12:00 p.m.
 };

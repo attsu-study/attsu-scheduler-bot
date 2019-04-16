@@ -48,7 +48,7 @@ controller.spawn({
     }
 
     new cron.CronJob({
-        cronTime: process.env.CRON,
+        cronTime: appConfig.cronTime,
         onTick: () => {
             console.log('started job');
             console.log(`Now: ${moment().format('YYYY-MM-DD HH:mm:ss')}`);

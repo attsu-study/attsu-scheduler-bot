@@ -8,5 +8,6 @@ module.exports.dev = {
         alertChannel: 'alert-bot',
         postChannel: 'test-private-channel'
     },
-    redis: {}
+    redis: {},
+    cronTime: '*/1 * * * *' // every minute
 };
