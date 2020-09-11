@@ -23,7 +23,7 @@
     "cron": "^1.6.0",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.23",
-    "node-fetch": "^2.3.0"
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
     "localtunnel": "^1.9.1"
